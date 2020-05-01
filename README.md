@@ -56,17 +56,17 @@ ___
 
 ## Installation
 
-Note that the `react-native-branch` module requires `react-native` >= 0.40.
+Note that the `react-native-branch` module requires `react-native` >= 0.40, <
+0.60.
 
-1. `yarn add react-native-branch`
+1. Install NPM dependencies:
+  `yarn add react-native-branch@^3.0.0`
+  or
+  `npm install --save react-native-branch@^3.0.0`
 2. (Optional) Add a branch.json file to the root of your app project. See https://rnbranch.app.link/branch-json.
 3. `react-native link react-native-branch`
 4. Install the native Branch SDK using [CocoaPods](./docs/cocoapods.md) or [Carthage](./docs/carthage.md).
 5. Follow the [setup instructions](#setup).
-
-**Note:** This SDK currently does not work in projects using NPM instead of yarn.
-See #433. The RN toolchain will use yarn by default. Please use
-`yarn add react-native-branch` to add the SDK to your project.
 
 ___
 
@@ -808,12 +808,10 @@ JavaScript finishes loading. To use these methods, two options are available.
 - Add a [branch.json](./docs/branch.json.md) file to your project.
 
     This allows you to enable debug mode (to simulate install events on both
-    Android and iOS), Apple Search Ads attribution and Apple Search Ads debug
-    mode from a configuration file.
+    Android and iOS), Apple Search Ads attribution from a configuration file.
 
 - Add native iOS and Android method calls to your project.
 
-    + [Debug mode (simulated install events)](./docs/setDebug.md)
     + [Apple Search Ads attribution](https://github.com/BranchMetrics/ios-branch-deep-linking#apple-search-ads)
 
 ___

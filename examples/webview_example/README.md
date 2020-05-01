@@ -14,5 +14,22 @@ pushes an Article component for the appropriate article when a link is opened.
 
 ## Building
 
-Just install the NPM dependencies using `yarn`. No other setup
-is required to run on a simulator.
+To build and run:
+
+```bash
+yarn
+```
+
+or
+
+```bash
+npm i
+```
+
+then
+
+```bash
+cd ios
+bundle check || bundle install
+bundle exec pod install
+```

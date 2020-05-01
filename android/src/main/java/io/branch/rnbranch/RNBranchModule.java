@@ -73,6 +73,7 @@ public class RNBranchModule extends ReactContextBaseJavaModule {
     private static final String IDENT_FIELD_NAME = "ident";
     public static final String UNIVERSAL_OBJECT_NOT_FOUND_ERROR_CODE = "RNBranch::Error::BUONotFound";
     private static final long AGING_HASH_TTL = 3600000;
+    private static final String PLUGIN_NAME = "ReactNative";
 
     private static JSONObject initSessionResult = null;
     private BroadcastReceiver mInitSessionEventReceiver = null;
@@ -91,6 +92,8 @@ public class RNBranchModule extends ReactContextBaseJavaModule {
         String liveKey = config.getLiveKey();
         String testKey = config.getTestKey();
         boolean useTest = config.getUseTestInstance();
+
+        Branch.registerPlugin(PLUGIN_NAME, io.branch.rnbranch.BuildConfig.RNBRANCH_VERSION);
 
         if (branchKey != null) {
             Branch.getAutoInstance(context, branchKey);
@@ -121,6 +124,11 @@ public class RNBranchModule extends ReactContextBaseJavaModule {
 
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
+
+                // react native currently expects this to never be null
+                if (referringParams == null) {
+                    referringParams = new JSONObject();
+                }
 
                 Log.d(REACT_CLASS, "onInitFinished");
                 JSONObject result = new JSONObject();
@@ -244,16 +252,6 @@ public class RNBranchModule extends ReactContextBaseJavaModule {
 
         constants.put(INIT_SESSION_SUCCESS, RN_INIT_SESSION_SUCCESS_EVENT);
         constants.put(INIT_SESSION_ERROR, RN_INIT_SESSION_ERROR_EVENT);
-
-        // Constants for use with userCompletedAction (deprecated)
-
-        constants.put(ADD_TO_CART_EVENT, BranchEvent.ADD_TO_CART);
-        constants.put(ADD_TO_WISHLIST_EVENT, BranchEvent.ADD_TO_WISH_LIST);
-        constants.put(PURCHASED_EVENT, BranchEvent.PURCHASED);
-        constants.put(PURCHASE_INITIATED_EVENT, BranchEvent.PURCHASE_STARTED);
-        constants.put(REGISTER_VIEW_EVENT, BranchEvent.VIEW);
-        constants.put(SHARE_COMPLETED_EVENT, BranchEvent.SHARE_COMPLETED);
-        constants.put(SHARE_INITIATED_EVENT, BranchEvent.SHARE_STARTED);
 
         // constants for use with BranchEvent
 
@@ -660,6 +658,8 @@ public class RNBranchModule extends ReactContextBaseJavaModule {
             RNBranchConfig config = new RNBranchConfig(context);
 
             if (mUseDebug || config.getDebugMode()) branch.setDebug();
+
+            if (config.getEnableFacebookLinkCheck()) branch.enableFacebookAppLinkCheck();
 
             if (mRequestMetadata != null) {
                 Iterator keys = mRequestMetadata.keys();
