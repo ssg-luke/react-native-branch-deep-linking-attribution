@@ -292,3 +292,9 @@ BranchEvent.AchieveLevel = RNBranch.STANDARD_EVENT_ACHIEVE_LEVEL
  * @type {string}
  */
 BranchEvent.UnlockAchievement = RNBranch.STANDARD_EVENT_UNLOCK_ACHIEVEMENT
+
+/**
+ * Standard Unlock Achievement event
+ * @type {string}
+ */
+BranchEvent.StartTrial = RNBranch.STANDARD_EVENT_START_TRIAL
