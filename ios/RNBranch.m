@@ -123,7 +123,8 @@ RCT_EXPORT_MODULE();
              @"STANDARD_EVENT_COMPLETE_REGISTRATION": BranchStandardEventCompleteRegistration,
              @"STANDARD_EVENT_COMPLETE_TUTORIAL": BranchStandardEventCompleteTutorial,
              @"STANDARD_EVENT_ACHIEVE_LEVEL": BranchStandardEventAchieveLevel,
-             @"STANDARD_EVENT_UNLOCK_ACHIEVEMENT": BranchStandardEventUnlockAchievement
+             @"STANDARD_EVENT_UNLOCK_ACHIEVEMENT": BranchStandardEventUnlockAchievement,
+             @"STANDARD_EVENT_START_TRIAL": BranchStandardEventStartTrial
              };
 }
 

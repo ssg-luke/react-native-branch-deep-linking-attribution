@@ -118,4 +118,9 @@
     ASSERT_CONSTANT(@"STANDARD_EVENT_UNLOCK_ACHIEVEMENT", BranchStandardEventUnlockAchievement);
 }
 
+- (void)testStandardStartTrialEventConstant
+{
+    ASSERT_CONSTANT(@"STANDARD_EVENT_START_TRIAL", BranchStandardEventStartTrial);
+}
+
 @end
